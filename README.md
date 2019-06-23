@@ -200,22 +200,21 @@ interface IOrderBookAggregate {
 
 - This is a standalone UI library
 - This library should be as lightweight as possible with few to none dependencies
-- Developers won't use this internally as a npm package
-- Requests against data store are not asynchronous
+- Developers won't use this internally as an npm package
 - In memory database does not need to be persisted
 - Environment using library will have basic es2015 support
   - Otherwise if this would be `es5` compatible library I would need to import `es6-promise` polyfill
   - `es5` is still generally faster than `es2015` or `esnext`
-- Internal data store will not be access directly therefore external library unit/integration tests are enough
+- Internal data store will not be accessed directly therefore external library unit/integration tests are enough
 - Internal data store is required for future plug-and-plays
-  - Otherwise, I would have flattened and coupled the data store with the client and reduced library size by 30-50%
+  - Otherwise, I would have flattened and coupled the data store with the client and reduced library size by 10%
 - Orders are not going to be found by user
 - Local development environment requires TypeScript
 - Not running any prettyfier as there are general development formatting standards
 
 ### Notes
 
-- Any different solutions that I would have implemented (and how) are commented against respective classes, functions in the source
+- Any different solutions that I would have implemented (and how) are commented under respective classes, functions in the source
 - I didn't implement Order cancellation and preservation, current implementation removes the order completely
 - Library is so small that it was not optimized for tree shaking, it could have been done if:
   - Store was extracted to the surface
@@ -228,7 +227,7 @@ interface IOrderBookAggregate {
 - The microservice implementation would have included following:
   - Two builds:
     - One for internal use in other applications
-    - The other as standalone TCP endpoint with HTTP method support
+    - The other as a standalone TCP endpoint with HTTP method support
   - Persisted immutable red black tree Order Book for fast Order Matching
 
 ### Interview exercise
