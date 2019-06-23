@@ -4,7 +4,7 @@
   "description": "Silver Bar - Live Order Book",
   "main": "index.ts",
   "scripts": {
-    "test": "npm run build && jest",
+    "test": "npm run build && jest && npm run clean",
     "build": "npm run clean && webpack",
     "clean": "rimraf build"
   },

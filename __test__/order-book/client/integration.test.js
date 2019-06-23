@@ -331,7 +331,7 @@ describe("Order Book Client", () => {
           const BUY_ORDER_AGG_QTY = {};
           const SELL_ORDER_AGG_QTY = {};
 
-          // expect.assertions(30);
+          expect.assertions(26);
 
           // Set-up BUY Orders
           for (let i = 0; i < BUY_ORDERS_COUNT; i++) {
