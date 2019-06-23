@@ -13,14 +13,16 @@
 
 #### OrderBookClient
 
-Class that instanciates new Order Book client and exposes following functionality:
+Class that instantiates new Order Book client and exposes following functionality:
 
 - `addOrder(): Promise<Order>`
 - `removeOrder(): Promise<void>`
 - `getOrderBookAggregate(): Promise<OrderBookAggregate>`
 
 **Params:** none
+
 **Returns:** a new `OrderBookClient` instance
+
 **Example usage:**
 
 ```javascript
@@ -36,7 +38,9 @@ Class that instanciates new Order Book client and exposes following functionalit
 Method to add new Order to the Order Book which returns a new Order type Promise.
 
 **Params:** `Order` - new `Order` object
+
 **Returns:** `new Promise<Order>` - newly create Order with assigned Id
+
 **Example usage:**
 
 ```javascript
@@ -64,6 +68,7 @@ async () => {
 Method to remove an existing Order from the Order Book which returns a new void type Promise.
 
 **Params:** `orderId` - Existing Order Id
+
 **Example usage:**
 
 ```javascript
@@ -79,7 +84,9 @@ async () => {
 Method that returns Live Order Book (Order Aggregate) as `OrderBookAggregate` type Promise.
 
 **Params:** none
+
 **Returns:** `new Promise<OrderBookAggregate>`
+
 **Example usage:**
 
 ```javascript
@@ -193,7 +200,7 @@ interface IOrderBookAggregate {
 
 - This is a standalone UI library
 - This library should be as lightweight as possible with few to none dependencies
-- Developers won't use this internally as an npm package
+- Developers won't use this internally as a npm package
 - Requests against data store are not asynchronous
 - In memory database does not need to be persisted
 - Environment using library will have basic es2015 support
@@ -205,7 +212,7 @@ interface IOrderBookAggregate {
 ### Notes
 
 - Any different solutions that I would have implemented (and how) are commented against respective classes, functions in the source
-- I started using `clientId` instead of `userId` from the begining and didn't have time to start refactoring, which should be pretty straight forward with TypeScript
+- I started using `clientId` instead of `userId` from the beginning and didn't have time to start refactoring, which should be pretty straight forward with TypeScript
 - Initially I started out creating a nodejs microservice with `micro` library, but after reading through requirements I settled on just creating a library that is going to be used by UI directly
 - The microservice implementation would have included following:
   - Two builds:
