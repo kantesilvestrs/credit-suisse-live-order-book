@@ -7,7 +7,7 @@ import OrderBookAggregate from "../models/order-book-aggregate";
  * Order Book Client
  *
  * Here are few other solutions
- *  - Implement websocket to push order addition and removal messages
+ *  - (This was for microservice implementation) Implement websocket to push order addition and removal messages
  *  - Implement Redux/NgRx for event sourced store
  *  - Implement middleware layer to add ability to use different store solutions
  *

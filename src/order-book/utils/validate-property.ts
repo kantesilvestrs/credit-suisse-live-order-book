@@ -52,6 +52,19 @@ const checkValidObjectProperties = (
   }
 };
 
+/**
+ * Perform series of validations on give parameters
+ *
+ * TODO:
+ *  - Unit tests
+ *  - Cleaner implementation with funneling
+ *  - Validation builder with chain methods
+ *
+ * @param {string} name - parameter name
+ * @param {*} value - parameter value
+ * @param {string} [type] - (Optional) parameter type as string value
+ * @param {string[]} [validValues] - (Optional) valid parameter values as string[]
+ */
 const validate = (
   name: string,
   value: any,

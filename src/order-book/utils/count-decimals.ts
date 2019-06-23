@@ -1,6 +1,10 @@
 /**
  * Reliably count decimal places
  *
+ * TODO:
+ *  - Unit tests
+ *  - Type check value
+ *
  * @param {number} value
  * @returns {number}
  */

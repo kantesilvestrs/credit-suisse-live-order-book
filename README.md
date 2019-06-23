@@ -205,14 +205,25 @@ interface IOrderBookAggregate {
 - In memory database does not need to be persisted
 - Environment using library will have basic es2015 support
   - Otherwise if this would be `es5` compatible library I would need to import `es6-promise` polyfill
+  - `es5` is still generally faster than `es2015` or `esnext`
 - Internal data store will not be access directly therefore external library unit/integration tests are enough
 - Internal data store is required for future plug-and-plays
   - Otherwise, I would have flattened and coupled the data store with the client and reduced library size by 30-50%
+- Orders are not going to be found by user
+- Local development environment requires TypeScript
+- Not running any prettyfier as there are general development formatting standards
 
 ### Notes
 
 - Any different solutions that I would have implemented (and how) are commented against respective classes, functions in the source
+- I didn't implement Order cancellation and preservation, current implementation removes the order completely
+- Library is so small that it was not optimized for tree shaking, it could have been done if:
+  - Store was extracted to the surface
+  - Following methods added to the top module `addOrder`, `removeOrder`, `getOrderBookAggregate`
+  - And then have those methods self contained with store factory
+  - After these changes unsused methods would have been removed
 - I started using `clientId` instead of `userId` from the beginning and didn't have time to start refactoring, which should be pretty straight forward with TypeScript
+- Unit tests on utilities were not performed due to time constraints
 - Initially I started out creating a nodejs microservice with `micro` library, but after reading through requirements I settled on just creating a library that is going to be used by UI directly
 - The microservice implementation would have included following:
   - Two builds:

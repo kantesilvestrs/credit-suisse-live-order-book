@@ -54,6 +54,9 @@ export default class OrderBookStore {
   /**
    * Remove an order from the Order Book
    *
+   * Note:
+   *  - This can be improved with immutable store
+   *
    * @param {number} orderId
    * @returns {Promise<void>}
    * @memberof OrderBookStore
@@ -66,6 +69,7 @@ export default class OrderBookStore {
         );
 
         if (orderIndex !== -1) {
+          // Removing instead of cancelling the order
           this.orderBook = this.orderBook.filter(
             ({ orderId: oId }) => oId !== orderId
           );
@@ -126,6 +130,9 @@ export default class OrderBookStore {
   /**
    * Sort BUY/SELL price groups
    *
+   * Notes:
+   *  - This method could be avoided with SortedSet or SortedMap array
+   *
    * @private
    * @param {OrderBookAggregate} orderBookAggregate
    * @memberof OrderBookStore
@@ -147,6 +154,9 @@ export default class OrderBookStore {
   /**
    * Create new Order Book BUY/SELL aggregate
    *
+   * Notes:
+   *  - This whole method can be avoided with composite type array
+   *
    * @private
    * @param {IOrder[]} orderBook
    * @returns {OrderBookAggregate} A new OrderBookAggregate class
@@ -154,7 +164,7 @@ export default class OrderBookStore {
    */
   private createOrderBookAggregate(orderBook: IOrder[]): OrderBookAggregate {
     return orderBook.reduce(function(rv, cv) {
-      // Find index of current orders price group
+      // Find index of the current order price group
       const priceGroupIndex = rv[cv.orderType].findIndex(
         ({ priceGroup: price }) => price === cv.price
       );
@@ -175,7 +185,7 @@ export default class OrderBookStore {
         return rv;
       }
 
-      // Aggregate summ and add order to orders list
+      // Aggregate the summ and add the Order to orders list
       const currentPriceGroup = rv[cv.orderType][priceGroupIndex];
       currentPriceGroup.aggQty = addNumbers(
         currentPriceGroup.aggQty,
