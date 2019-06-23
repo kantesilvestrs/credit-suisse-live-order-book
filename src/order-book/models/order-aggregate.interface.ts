@@ -15,6 +15,13 @@ interface IOrderAggregateOrder {
   quantity: number;
 }
 
+/**
+ *
+ * Notes:
+ *  - Used as short as possible property names, for optimal data transfer over the network, these names could have been even shorter
+ *
+ * @interface IOrderAggregate
+ */
 interface IOrderAggregate {
   /**
    * Order price group
